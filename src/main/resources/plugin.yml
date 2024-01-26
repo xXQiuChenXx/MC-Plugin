@@ -1,0 +1,4 @@
+name: MC-Plugin
+version: '${project.version}'
+main: me.qiuchen.mcplugin.Main
+api-version: '1.20'
