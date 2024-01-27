@@ -1,7 +1,9 @@
 package me.qiuchen.mcplugin;
 
+import me.qiuchen.mcplugin.listeners.MyEvents;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
@@ -18,6 +20,7 @@ public final class Main extends JavaPlugin implements Listener {
         System.out.println("The plugin has started!");
 
         getServer().getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(new MyEvents(), this);
 
     }
 
@@ -33,6 +36,10 @@ public final class Main extends JavaPlugin implements Listener {
 
         TextComponent component = Component.text("Welcome to the server @" + player.getName());
         event.joinMessage(component);
+
+        if(player.getName().equals("YuanXeow")) {
+            player.setGameMode(GameMode.CREATIVE);
+        }
     }
 
     @EventHandler
