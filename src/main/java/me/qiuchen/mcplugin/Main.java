@@ -4,9 +4,11 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
@@ -21,18 +23,13 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        System.out.println("Stopping My Plugin");
+        HandlerList.unregisterAll((Plugin) this);
+        System.out.println("Mc plugin was stopped!");
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        try {
-            String msg = event.joinMessage().toString();
-            System.out.println(msg);
-        } catch (NullPointerException error) {
-            //
-        }
 
         TextComponent component = Component.text("Welcome to the server @" + player.getName());
         event.joinMessage(component);
