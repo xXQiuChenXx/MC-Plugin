@@ -1,5 +1,6 @@
 package me.qiuchen.mcplugin;
 
+import me.qiuchen.mcplugin.commands.MainCommand;
 import me.qiuchen.mcplugin.listeners.MyEvents;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
@@ -17,9 +18,8 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         System.out.println("The plugin has started!");
-
-        getServer().getPluginManager().registerEvents(new MyEvents(), this);
-
+        registerEvents();
+        registerCommands();
     }
 
     @Override
@@ -28,20 +28,17 @@ public final class Main extends JavaPlugin implements Listener {
         System.out.println("Mc plugin was stopped!");
     }
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(!command.getName().equalsIgnoreCase("hi")) return false;
+    private void registerEvents() {
+        getServer().getPluginManager().registerEvents(new MyEvents(), this);
+    }
 
-        if(sender instanceof Player player) {
-            player.sendMessage("Hello, Welcome to plugin dev!");
+    private void registerCommands() {
+        MainCommand command = new MainCommand();
+        getCommand("hi").setExecutor(command);
+    }
 
-        } else if(sender instanceof ConsoleCommandSender) {
-            System.out.println("Hello Console!");
 
-        } else if(sender instanceof BlockCommandSender) {
-            System.out.println("The command was run by the Console.");
-        }
-
-        return true;
+    public static void reload() {
+        System.out.println("Reload Done!");
     }
 }
