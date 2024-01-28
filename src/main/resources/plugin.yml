@@ -2,3 +2,8 @@ name: MC-Plugin
 version: '${project.version}'
 main: me.qiuchen.mcplugin.Main
 api-version: '1.20'
+website: https://github.com/xXQiuChenXx/MC-Plugin
+commands:
+  hi:
+    description: Say Hi to Developers
+    usage: /<command> [stfu/good/reload]
