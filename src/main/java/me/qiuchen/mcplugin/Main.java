@@ -2,17 +2,10 @@ package me.qiuchen.mcplugin;
 
 import me.qiuchen.mcplugin.commands.MainCommand;
 import me.qiuchen.mcplugin.listeners.MyEvents;
-import org.bukkit.command.BlockCommandSender;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
-
 public final class Main extends JavaPlugin implements Listener {
 
     @Override
@@ -36,7 +29,6 @@ public final class Main extends JavaPlugin implements Listener {
         MainCommand command = new MainCommand();
         getCommand("hi").setExecutor(command);
     }
-
 
     public static void reload() {
         System.out.println("Reload Done!");
