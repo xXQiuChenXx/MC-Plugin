@@ -4,6 +4,16 @@ main: me.qiuchen.mcplugin.Main
 api-version: '1.20'
 website: https://github.com/xXQiuChenXx/MC-Plugin
 commands:
-  hi:
-    description: Say Hi to Developers
+  mc:
+    description: Say Hi to Minecraft Dev
     usage: /<command> [stfu/good/reload]
+    permission: mc.use
+    permission-message: "You don't have permission to use this command."
+
+permissions:
+  mc.use:
+    description: "Allows you to use the MC Plugin"
+    default: op
+  mc.reload:
+    description: "Allows you to reload the plugin"
+    default: op

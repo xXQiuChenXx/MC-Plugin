@@ -4,6 +4,7 @@ import me.qiuchen.mcplugin.commands.MainCommand;
 import me.qiuchen.mcplugin.listeners.DeathListener;
 import me.qiuchen.mcplugin.listeners.MyEvents;
 import org.bukkit.Server;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -32,9 +33,10 @@ public final class Main extends JavaPlugin implements Listener {
         pluginManager.registerEvents(new DeathListener(), this);
     }
 
+    @SuppressWarnings("")
     private void registerCommands() {
-        MainCommand command = new MainCommand();
-        getCommand("hi").setExecutor(command);
+        PluginCommand command = getCommand("mc");
+        if(command != null) command.setExecutor(new MainCommand()); // To Bypass NullPointer Warnings
     }
 
     public static void reload() {
