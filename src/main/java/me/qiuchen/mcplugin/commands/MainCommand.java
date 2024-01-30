@@ -6,8 +6,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import me.qiuchen.mcplugin.Main;
 
-import java.util.Objects;
-
 public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
@@ -17,7 +15,7 @@ public class MainCommand implements CommandExecutor {
             if (strings.length == 0) return true;
 
             if (strings[0].equals("reload")) {
-                if(!sender.hasPermission("mc.reload")) {
+                if (!sender.hasPermission("mc.reload")) {
                     player.sendMessage("You dont have the permission to use this command.");
                     return false;
                 }
@@ -25,10 +23,11 @@ public class MainCommand implements CommandExecutor {
             }
 
             if (strings[0].equals("heal")) {
-                Player targetPlayer = Bukkit.getServer().getPlayerExact(strings[1]);
-
-                Objects.requireNonNullElse(targetPlayer, player).setHealth(10);
-                Objects.requireNonNullElse(targetPlayer, player).setFoodLevel(10);
+                Player targetPlayer = strings.length == 1 ? player : Bukkit.getServer().getPlayerExact(strings[1]);
+                if (targetPlayer != null) { // Bypass NullPointer
+                    targetPlayer.setFoodLevel(20);
+                    targetPlayer.setHealth(20);
+                }
             }
 
 
