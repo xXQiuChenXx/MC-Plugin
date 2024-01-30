@@ -16,10 +16,12 @@ public class MainCommand implements CommandExecutor {
 
             if (strings.length == 0) return true;
 
-            if (strings[0].equals(("reload")) && sender.hasPermission("mc.reload")) {
+            if (strings[0].equals("reload")) {
+                if(!sender.hasPermission("mc.reload")) {
+                    player.sendMessage("You dont have the permission to use this command.");
+                    return false;
+                }
                 Main.reload();
-            } else {
-                player.sendMessage("You dont have the permission to use this command.");
             }
 
             if (strings[0].equals("heal")) {
