@@ -33,15 +33,9 @@ public class MyEvents implements Listener {
         Player player = event.getPlayer();
         TextComponent component = Component.text("Welcome to the server @" + player.getName());
         event.joinMessage(component);
-        System.out.println(player.getName());
 
         if(player.getName().equalsIgnoreCase("YuanXeow")) {
             System.out.println("Test PASS");
-            try {
-                Thread.sleep(5000);
-            } catch(InterruptedException e) {
-                //
-            }
             player.setGameMode(GameMode.CREATIVE);
         }
     }
