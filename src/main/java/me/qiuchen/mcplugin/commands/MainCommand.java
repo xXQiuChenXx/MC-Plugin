@@ -20,7 +20,7 @@ public class MainCommand implements CommandExecutor {
                     player.sendMessage("You dont have the permission to use this command.");
                     return false;
                 }
-               Main instance = Main.getPlugin();
+                Main instance = Main.getPlugin();
                 instance.getConfigUtil().reload();
                 player.sendMessage("Reload Complete!");
             }

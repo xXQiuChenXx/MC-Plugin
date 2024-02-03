@@ -4,7 +4,7 @@ import me.qiuchen.mcplugin.Main;
 
 public class ConfigUtil {
     private final Main pluginInstance;
-    public String JoinMessage;
+    public static String JoinMessage;
 
     public ConfigUtil(Main pluginInstance) {
         this.pluginInstance = pluginInstance;

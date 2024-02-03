@@ -33,7 +33,7 @@ public final class Main extends JavaPlugin implements Listener {
 
     private void registerEvents() {
         PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(new MyEvents(this), this);
+        pluginManager.registerEvents(new MyEvents(), this);
         pluginManager.registerEvents(new DeathListener(), this);
     }
 

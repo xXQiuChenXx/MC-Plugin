@@ -1,7 +1,7 @@
 package me.qiuchen.mcplugin.listeners;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import me.qiuchen.mcplugin.Main;
+import me.qiuchen.mcplugin.utils.ConfigUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.GameMode;
@@ -16,12 +16,6 @@ import org.bukkit.event.player.PlayerShearEntityEvent;
 
 
 public class MyEvents implements Listener {
-    private final Main plugin;
-
-    public MyEvents(Main plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onSheerEntity(PlayerShearEntityEvent event) {
         Entity entity = event.getEntity();
@@ -38,7 +32,7 @@ public class MyEvents implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        String configMessage = this.plugin.getConfigUtil().JoinMessage;
+        String configMessage = ConfigUtil.JoinMessage;
 
         if(configMessage != null) {
             String joinText = PlaceholderAPI.setPlaceholders(event.getPlayer(), configMessage);
