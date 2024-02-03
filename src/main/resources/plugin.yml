@@ -3,6 +3,7 @@ version: '${project.version}'
 main: me.qiuchen.mcplugin.Main
 api-version: '1.20'
 website: https://github.com/xXQiuChenXx/MC-Plugin
+softdepend: [PlaceholderAPI]
 commands:
   mc:
     description: Say Hi to Minecraft Dev
