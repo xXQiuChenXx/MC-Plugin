@@ -19,7 +19,8 @@ public class MainCommand implements CommandExecutor {
                     player.sendMessage("You dont have the permission to use this command.");
                     return false;
                 }
-                Main.reload();
+               Main instance = Main.getPlugin();
+                instance.getConfigUtil().reload();
             }
 
             if (strings[0].equals("heal")) {

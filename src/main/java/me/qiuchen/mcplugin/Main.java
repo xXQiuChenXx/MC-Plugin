@@ -3,6 +3,7 @@ package me.qiuchen.mcplugin;
 import me.qiuchen.mcplugin.commands.MainCommand;
 import me.qiuchen.mcplugin.listeners.DeathListener;
 import me.qiuchen.mcplugin.listeners.MyEvents;
+import me.qiuchen.mcplugin.utils.ConfigUtil;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -12,14 +13,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
     private static Main plugin; // Get plugin instance
+    private ConfigUtil configUtil;
 
     @Override
     public void onEnable() {
         plugin = this;
-        System.out.println("The plugin has started!");
+        configUtil = new ConfigUtil(this);
         saveDefaultConfig();
         registerEvents();
         registerCommands();
+        System.out.println("The plugin has started!");
     }
 
     @Override
@@ -40,12 +43,12 @@ public final class Main extends JavaPlugin implements Listener {
         if(command != null) command.setExecutor(new MainCommand()); // To Bypass NullPointer Warnings
     }
 
-    public static void reload() {
-        System.out.println("Reload Done!");
-    }
-
     public static Main getPlugin() {
         return plugin;
+    }
+
+    public ConfigUtil getConfigUtil() {
+        return this.configUtil;
     }
 
 }

@@ -38,7 +38,7 @@ public class MyEvents implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        String configMessage = this.plugin.getConfig().getString("join-message");
+        String configMessage = this.plugin.getConfigUtil().JoinMessage;
 
         if(configMessage != null) {
             String joinText = PlaceholderAPI.setPlaceholders(event.getPlayer(), configMessage);

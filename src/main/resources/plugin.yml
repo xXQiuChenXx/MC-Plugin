@@ -7,7 +7,7 @@ softdepend: [PlaceholderAPI]
 commands:
   mc:
     description: Say Hi to Minecraft Dev
-    usage: /<command> [stfu/good/reload]
+    usage: /<command> [good/reload]
     permission: mc.use
     permission-message: "You don't have permission to use this command."
 
