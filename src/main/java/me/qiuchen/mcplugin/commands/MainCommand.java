@@ -10,9 +10,10 @@ public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (sender instanceof Player player) {
-            player.sendMessage("Hello, Welcome to plugin dev!");
-
-            if (strings.length == 0) return true;
+            if (strings.length == 0) {
+                player.sendMessage("Hello, Welcome to plugin dev!");
+                return true;
+            }
 
             if (strings[0].equals("reload")) {
                 if (!sender.hasPermission("mc.reload")) {
@@ -21,6 +22,7 @@ public class MainCommand implements CommandExecutor {
                 }
                Main instance = Main.getPlugin();
                 instance.getConfigUtil().reload();
+                player.sendMessage("Reload Complete!");
             }
 
             if (strings[0].equals("heal")) {
