@@ -20,6 +20,7 @@ public final class Main extends JavaPlugin implements Listener {
         plugin = this;
         configUtil = new ConfigUtil(this);
         saveDefaultConfig();
+        configUtil.loadConfiguration();
         registerEvents();
         registerCommands();
         System.out.println("The plugin has started!");
@@ -28,6 +29,7 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         HandlerList.unregisterAll((Plugin) this);
+        System.out.println(getConfig().getString("join-message"));
         System.out.println("Mc plugin was stopped!");
     }
 

@@ -21,7 +21,7 @@ public class MainCommand implements CommandExecutor {
                     return false;
                 }
                 Main instance = Main.getPlugin();
-                instance.getConfigUtil().reload();
+                instance.getConfigUtil().loadConfiguration();
                 player.sendMessage("Reload Complete!");
             }
 
