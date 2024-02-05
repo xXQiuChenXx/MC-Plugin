@@ -1,5 +1,8 @@
 package me.qiuchen.mcplugin.commands;
 
+import me.qiuchen.mcplugin.utils.Constants;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.*;
@@ -38,11 +41,12 @@ public class MainCommand implements CommandExecutor {
             }
 
             if(strings[0].equals("gui")) {
-                Inventory inventory = Bukkit.createInventory(player, 27, "Test");
+                Component component = Constants.GUITitle;
+                Inventory inventory = Bukkit.createInventory(player, 27, component);
                 ItemStack item = new ItemStack(Material.DIAMOND_AXE);
                 ItemMeta itemMeta = item.getItemMeta();
 
-                itemMeta.setDisplayName("Hello");
+                itemMeta.displayName(component);
                 item.setItemMeta(itemMeta);
 
                 inventory.setItem(1, item);
