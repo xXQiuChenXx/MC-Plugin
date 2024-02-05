@@ -1,8 +1,12 @@
 package me.qiuchen.mcplugin.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import me.qiuchen.mcplugin.Main;
 
@@ -31,6 +35,18 @@ public class MainCommand implements CommandExecutor {
                     targetPlayer.setFoodLevel(20);
                     targetPlayer.setHealth(20);
                 }
+            }
+
+            if(strings[0].equals("gui")) {
+                Inventory inventory = Bukkit.createInventory(player, 27, "Test");
+                ItemStack item = new ItemStack(Material.DIAMOND_AXE);
+                ItemMeta itemMeta = item.getItemMeta();
+
+                itemMeta.setDisplayName("Hello");
+                item.setItemMeta(itemMeta);
+
+                inventory.setItem(1, item);
+                player.openInventory(inventory);
             }
 
 
