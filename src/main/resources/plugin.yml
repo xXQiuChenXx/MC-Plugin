@@ -10,6 +10,11 @@ commands:
     usage: /<command> [good/reload]
     permission: mc.use
     permission-message: "You don't have permission to use this command."
+  database:
+    description: Test database query
+    usage: /<command>
+    permission: mc.use
+    permission-message: "You don't have permission to use this command."
 
 permissions:
   mc.use:

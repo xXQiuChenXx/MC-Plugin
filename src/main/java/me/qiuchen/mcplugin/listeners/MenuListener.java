@@ -13,7 +13,7 @@ public class MenuListener implements Listener {
     @EventHandler
     public void onMenuClick(InventoryClickEvent event) {
         Component component = Constants.GUITitle;
-        System.out.println(event.getView().title());
+        System.out.println(event.getView().getTitle());
         if(event.getView().title().equals(component)) {
             if(event.getCurrentItem() == null) return;
 
