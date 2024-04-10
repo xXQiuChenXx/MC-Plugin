@@ -78,6 +78,7 @@ public final class Main extends JavaPlugin implements Listener {
         return plugin;
     }
 
+
     public ConfigUtil getConfigUtil() {
         return this.configUtil;
     }
