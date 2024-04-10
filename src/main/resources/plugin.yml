@@ -5,7 +5,7 @@ api-version: '1.20'
 website: https://github.com/xXQiuChenXx/MC-Plugin
 softdepend: [PlaceholderAPI]
 commands:
-  mc:
+  mcp:
     description: Say Hi to Minecraft Dev
     usage: /<command> [good/reload]
     permission: mc.use
@@ -15,11 +15,22 @@ commands:
     usage: /<command>
     permission: mc.use
     permission-message: "You don't have permission to use this command."
+  fly:
+    description: Fly Like a bird
+    usage: /<command>
+    permission: mcp.fly
+    permission-message: "You don't have permission to use this command."
 
 permissions:
-  mc.use:
+  mcp.use:
     description: "Allows you to use the MC Plugin"
     default: op
-  mc.reload:
+  mcp.fly:
+    description: "Allows you to use the MC Plugin"
+    default: op
+  mcp.fly.other:
+    description: "Allows you to use the MC Plugin"
+    default: op
+  mcp.reload:
     description: "Allows you to reload the plugin"
     default: op
