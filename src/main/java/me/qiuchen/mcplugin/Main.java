@@ -1,6 +1,7 @@
 package me.qiuchen.mcplugin;
 
 import me.qiuchen.mcplugin.commands.DBCommand;
+import me.qiuchen.mcplugin.commands.FlyCommand;
 import me.qiuchen.mcplugin.commands.MainCommand;
 import me.qiuchen.mcplugin.listeners.DeathListener;
 import me.qiuchen.mcplugin.listeners.MyEvents;
@@ -56,7 +57,9 @@ public final class Main extends JavaPlugin implements Listener {
         PluginCommand command = getCommand("mc");
         if(command != null) command.setExecutor(new MainCommand()); // To Bypass NullPointer Warnings
         PluginCommand db_command = getCommand("database");
-        if(command != null) command.setExecutor(new DBCommand());
+        if(db_command != null) db_command.setExecutor(new DBCommand());
+        PluginCommand fly_cmd = getCommand("fly");
+        if(fly_cmd != null) fly_cmd.setExecutor(new FlyCommand());
     }
 
     public void DBConnection() {
