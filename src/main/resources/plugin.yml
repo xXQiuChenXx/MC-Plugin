@@ -26,10 +26,10 @@ permissions:
     description: "Allows you to use the MC Plugin"
     default: op
   mcp.fly:
-    description: "Allows you to use the MC Plugin"
+    description: "Allows you to fly"
     default: op
   mcp.fly.other:
-    description: "Allows you to use the MC Plugin"
+    description: "Allows you to let others fly"
     default: op
   mcp.reload:
     description: "Allows you to reload the plugin"
