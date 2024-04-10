@@ -27,7 +27,7 @@ public class MainCommand implements CommandExecutor {
             String subcommand = strings[0];
 
             if (subcommand.equals("reload")) {
-                if (!sender.hasPermission("mc.reload")) {
+                if (!sender.hasPermission("mcp.reload")) {
                     player.sendMessage("You dont have the permission to use this command.");
                     return false;
                 }
