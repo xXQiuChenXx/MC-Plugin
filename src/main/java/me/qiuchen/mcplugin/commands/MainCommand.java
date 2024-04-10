@@ -13,6 +13,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import me.qiuchen.mcplugin.Main;
 
+import static me.qiuchen.mcplugin.commands.subcommands.FlyCommand.onFlyCommand;
+
 public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
@@ -53,6 +55,10 @@ public class MainCommand implements CommandExecutor {
 
                 inventory.setItem(1, item);
                 player.openInventory(inventory);
+            }
+
+            if(subcommand.equals("fly")) {
+               onFlyCommand(player, strings);
             }
 
 

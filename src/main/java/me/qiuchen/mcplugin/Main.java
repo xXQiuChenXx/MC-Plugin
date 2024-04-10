@@ -54,10 +54,6 @@ public final class Main extends JavaPlugin implements Listener {
     private void registerCommands() {
         PluginCommand command = getCommand("mc");
         if(command != null) command.setExecutor(new MainCommand()); // To Bypass NullPointer Warnings
-        PluginCommand db_command = getCommand("database");
-        if(db_command != null) db_command.setExecutor(new DBCommand());
-        PluginCommand fly_cmd = getCommand("fly");
-        if(fly_cmd != null) fly_cmd.setExecutor(new FlyCommand());
     }
 
     public void DBConnection() {

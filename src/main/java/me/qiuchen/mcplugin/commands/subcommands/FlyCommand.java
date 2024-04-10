@@ -12,6 +12,14 @@ public class FlyCommand {
 
         Player target = args[0].isEmpty() ? sender : Bukkit.getServer().getPlayer(args[0]);
 
+        if(args[0] != null && !sender.hasPermission("mcp.fly.other")) {
+            sender.sendMessage("You dont have the permission to use this command.");
+            return false;
+        } else if(args[0] != null && args[0].isEmpty() && !sender.hasPermission("mcp.fly")) {
+            sender.sendMessage("You dont have the permission to use this command.");
+            return false;
+        }
+
         if(target != null & sender != null) {
             if (flying_players.contains(target)) {
                 target.setAllowFlight(false);
