@@ -1,7 +1,5 @@
 package me.qiuchen.mcplugin;
 
-import me.qiuchen.mcplugin.commands.DBCommand;
-import me.qiuchen.mcplugin.commands.FlyCommand;
 import me.qiuchen.mcplugin.commands.MainCommand;
 import me.qiuchen.mcplugin.listeners.DeathListener;
 import me.qiuchen.mcplugin.listeners.MyEvents;

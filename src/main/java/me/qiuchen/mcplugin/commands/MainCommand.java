@@ -16,13 +16,15 @@ import me.qiuchen.mcplugin.Main;
 public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (sender instanceof Player player) {
+        if (sender instanceof Player player) { // Player Commands
             if (strings.length == 0) {
-                player.sendMessage("Hello, Welcome to plugin dev!");
+                player.sendMessage("你好，這裏是MCP !!!");
                 return true;
             }
 
-            if (strings[0].equals("reload")) {
+            String subcommand = strings[0];
+
+            if (subcommand.equals("reload")) {
                 if (!sender.hasPermission("mc.reload")) {
                     player.sendMessage("You dont have the permission to use this command.");
                     return false;
@@ -32,7 +34,7 @@ public class MainCommand implements CommandExecutor {
                 player.sendMessage("Reload Complete!");
             }
 
-            if (strings[0].equals("heal")) {
+            if (subcommand.equals("heal")) {
                 Player targetPlayer = strings.length == 1 ? player : Bukkit.getServer().getPlayerExact(strings[1]);
                 if (targetPlayer != null) { // Bypass NullPointer
                     targetPlayer.setFoodLevel(20);
@@ -40,7 +42,7 @@ public class MainCommand implements CommandExecutor {
                 }
             }
 
-            if(strings[0].equals("gui")) {
+            if(subcommand.equals("gui")) {
                 Component component = Constants.GUITitle;
                 Inventory inventory = Bukkit.createInventory(player, 27, component);
                 ItemStack item = new ItemStack(Material.DIAMOND_AXE);
