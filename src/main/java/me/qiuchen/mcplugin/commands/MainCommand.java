@@ -1,10 +1,5 @@
 package me.qiuchen.mcplugin.commands;
 
-import me.qiuchen.mcplugin.utils.Constants;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -15,6 +10,7 @@ import me.qiuchen.mcplugin.Main;
 
 import static me.qiuchen.mcplugin.commands.subcommands.FlyCommand.onFlyCommand;
 import static me.qiuchen.mcplugin.commands.subcommands.GuiCommand.onGuiCommand;
+import static me.qiuchen.mcplugin.commands.subcommands.HealCommand.onHealCommand;
 
 public class MainCommand implements CommandExecutor {
     @Override
@@ -38,11 +34,7 @@ public class MainCommand implements CommandExecutor {
             }
 
             if (subcommand.equals("heal")) {
-                Player targetPlayer = strings.length == 1 ? player : Bukkit.getServer().getPlayerExact(strings[1]);
-                if (targetPlayer != null) { // Bypass NullPointer
-                    targetPlayer.setFoodLevel(20);
-                    targetPlayer.setHealth(20);
-                }
+                onHealCommand(player, strings);
             }
 
             if(subcommand.equals("gui")) {
