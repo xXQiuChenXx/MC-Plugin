@@ -32,25 +32,6 @@ public class MainCommandTabComplete implements TabCompleter {
             return list;
         }
 
-        if (args.length == 2) {
-
-            if ("give".equalsIgnoreCase(args[0])) {
-                return null;
-            }
-
-            if (args[0].equalsIgnoreCase("mode")) {
-                if (player.hasPermission("debugstickpro.mode")) {
-                    list.add("classic");
-                }
-                if (player.hasPermission("debugstickpro.mode.copy")) {
-                    list.add("copy");
-                }
-                if (player.hasPermission("debugstickpro.mode.freeze")) {
-                    list.add("freeze");
-                }
-                return list;
-            }
-        }
         return list;
     }
 }
