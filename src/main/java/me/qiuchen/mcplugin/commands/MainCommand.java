@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import me.qiuchen.mcplugin.Main;
 
 import static me.qiuchen.mcplugin.commands.subcommands.FlyCommand.onFlyCommand;
+import static me.qiuchen.mcplugin.commands.subcommands.GuiCommand.onGuiCommand;
 
 public class MainCommand implements CommandExecutor {
     @Override
@@ -45,16 +46,7 @@ public class MainCommand implements CommandExecutor {
             }
 
             if(subcommand.equals("gui")) {
-                Component component = Constants.GUITitle;
-                Inventory inventory = Bukkit.createInventory(player, 27, component);
-                ItemStack item = new ItemStack(Material.DIAMOND_AXE);
-                ItemMeta itemMeta = item.getItemMeta();
-
-                itemMeta.displayName(component);
-                item.setItemMeta(itemMeta);
-
-                inventory.setItem(1, item);
-                player.openInventory(inventory);
+                onGuiCommand(player);
             }
 
             if(subcommand.equals("fly")) {
