@@ -10,12 +10,12 @@ public class FlyCommand {
 
     public static boolean onFlyCommand(Player sender, String[] args) {
 
-        Player target = args[0].isEmpty() ? sender : Bukkit.getServer().getPlayer(args[0]);
+        Player target = args[1].isEmpty() ? sender : Bukkit.getServer().getPlayer(args[0]);
 
-        if(args[0] != null && !sender.hasPermission("mcp.fly.other")) {
+        if(args[1] != null && !sender.hasPermission("mcp.fly.other")) {
             sender.sendMessage("You dont have the permission to use this command.");
             return false;
-        } else if(args[0] != null && args[0].isEmpty() && !sender.hasPermission("mcp.fly")) {
+        } else if(args[1] != null && args[1].isEmpty() && !sender.hasPermission("mcp.fly")) {
             sender.sendMessage("You dont have the permission to use this command.");
             return false;
         }
