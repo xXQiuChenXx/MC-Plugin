@@ -67,8 +67,9 @@ public final class Main extends JavaPlugin implements Listener {
         String database = ConfigUtil.getConfig().getString("database.database");
 
         try {
+            getLogger().info("Connecting to database...");
             String url = "jdbc:mysql://" + host + ":" + port + "/" + database + "?user=" + username + "&password=" + password + "&sslaccept=strict&connectTimeout=5000";
-            connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
+            connection = DriverManager.getConnection(url);
             getLogger().info("Connected to database!");
         } catch (SQLException e) {
             getLogger().warning("Failed to connect to database: " + e.getMessage());
