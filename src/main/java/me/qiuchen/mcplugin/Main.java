@@ -28,7 +28,7 @@ public final class Main extends JavaPlugin implements Listener {
         configUtil.loadConfiguration();
         registerEvents();
         registerCommands();
-        DBConnection();
+        ConnectDB();
         System.out.println("The plugin has started!");
     }
 
@@ -59,7 +59,7 @@ public final class Main extends JavaPlugin implements Listener {
         if(command != null) command.setExecutor(new MainCommand()); // To Bypass NullPointer Warnings
     }
 
-    public void DBConnection() {
+    public void ConnectDB() {
         String host = ConfigUtil.getConfig().getString("database.host");
         int port = ConfigUtil.getConfig().getInt("database.port");
         String username = ConfigUtil.getConfig().getString("database.username");
@@ -67,6 +67,7 @@ public final class Main extends JavaPlugin implements Listener {
         String database = ConfigUtil.getConfig().getString("database.database");
 
         try {
+            String url = "jdbc:mysql://" + host + ":" + port + "/" + database + "?user=" + username + "&password=" + password + "&sslaccept=strict&connectTimeout=5000";
             connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
             getLogger().info("Connected to database!");
         } catch (SQLException e) {

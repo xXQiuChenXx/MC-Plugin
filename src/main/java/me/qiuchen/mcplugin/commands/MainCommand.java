@@ -3,8 +3,6 @@ package me.qiuchen.mcplugin.commands;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import me.qiuchen.mcplugin.Main;
-
 import static me.qiuchen.mcplugin.commands.subcommands.FlyCommand.onFlyCommand;
 import static me.qiuchen.mcplugin.commands.subcommands.GuiCommand.onGuiCommand;
 import static me.qiuchen.mcplugin.commands.subcommands.HealCommand.onHealCommand;
