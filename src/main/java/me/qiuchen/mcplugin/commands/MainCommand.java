@@ -37,7 +37,6 @@ public class MainCommand implements CommandExecutor {
                onFlyCommand(player, strings);
             }
 
-
         } else if (sender instanceof ConsoleCommandSender) {
             System.out.println("Hello Console!");
 

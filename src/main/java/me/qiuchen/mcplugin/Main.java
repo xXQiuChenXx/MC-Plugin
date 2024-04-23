@@ -36,10 +36,13 @@ public final class Main extends JavaPlugin implements Listener {
     public void onDisable() {
         HandlerList.unregisterAll((Plugin) this);
         System.out.println(getConfig().getString("join-message"));
+
         try {
-            connection.close();
+            if(connection != null && !connection.isClosed()) {
+                connection.close();
+            }
         } catch (SQLException e) {
-            getLogger().warning("Failed to disconnect to database: " + e.getMessage());
+            getLogger().warning(e.getMessage());
         }
         System.out.println("Mc plugin was stopped!");
     }
