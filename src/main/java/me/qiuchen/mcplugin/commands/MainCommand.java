@@ -8,6 +8,7 @@ import me.qiuchen.mcplugin.Main;
 import static me.qiuchen.mcplugin.commands.subcommands.FlyCommand.onFlyCommand;
 import static me.qiuchen.mcplugin.commands.subcommands.GuiCommand.onGuiCommand;
 import static me.qiuchen.mcplugin.commands.subcommands.HealCommand.onHealCommand;
+import static me.qiuchen.mcplugin.commands.subcommands.ReloadCommand.onReloadCommand;
 
 public class MainCommand implements CommandExecutor {
     @Override
@@ -21,13 +22,7 @@ public class MainCommand implements CommandExecutor {
             String subcommand = strings[0];
 
             if (subcommand.equals("reload")) {
-                if (!sender.hasPermission("mcp.reload")) {
-                    player.sendMessage("You dont have the permission to use this command.");
-                    return false;
-                }
-                Main instance = Main.getPlugin();
-                instance.getConfigUtil().loadConfiguration();
-                player.sendMessage("Reload Complete!");
+                onReloadCommand(player);
             }
 
             if (subcommand.equals("heal")) {
