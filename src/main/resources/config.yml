@@ -1,7 +1,8 @@
 join-message: 'Welcome %player_displayname% to the server!'
-database:
+mysql:
   host: ''
   port: 3306
   database: ''
   username: ''
   password: ''
+  useSSL: false

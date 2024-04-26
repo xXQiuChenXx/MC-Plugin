@@ -3,6 +3,7 @@ package me.qiuchen.mcplugin;
 import me.qiuchen.mcplugin.commands.MainCommand;
 import me.qiuchen.mcplugin.listeners.DeathListener;
 import me.qiuchen.mcplugin.listeners.MyEvents;
+import me.qiuchen.mcplugin.database.DataSource;
 import me.qiuchen.mcplugin.utils.ConfigUtil;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.event.HandlerList;
@@ -11,8 +12,9 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public final class Main extends JavaPlugin implements Listener {
@@ -28,8 +30,20 @@ public final class Main extends JavaPlugin implements Listener {
         configUtil.loadConfiguration();
         registerEvents();
         registerCommands();
-        ConnectDB();
         System.out.println("The plugin has started!");
+    }
+
+    @Override
+    public void onLoad() {
+        try {
+            configUtil.loadConfiguration();
+            DataSource dataSource = new DataSource(configUtil.getConfig());
+            connection = dataSource.getConnection();
+            System.out.println("Connected to database!");
+            System.out.println(connection.getClientInfo());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -57,24 +71,6 @@ public final class Main extends JavaPlugin implements Listener {
     private void registerCommands() {
         PluginCommand command = getCommand("mc");
         if(command != null) command.setExecutor(new MainCommand()); // To Bypass NullPointer Warnings
-    }
-
-    public void ConnectDB() {
-        String host = ConfigUtil.getConfig().getString("database.host");
-        int port = ConfigUtil.getConfig().getInt("database.port");
-        String username = ConfigUtil.getConfig().getString("database.username");
-        String password = ConfigUtil.getConfig().getString("database.password");
-        String database = ConfigUtil.getConfig().getString("database.database");
-
-        try {
-            getLogger().info("Connecting to database...");
-            String url = "jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=true";
-            getLogger().info(url);
-            connection = DriverManager.getConnection(url, username, password);
-            getLogger().info("Connected to database!");
-        } catch (SQLException e) {
-            getLogger().warning("Failed to connect to database: " + e.getMessage());
-        }
     }
 
     public static Main getPlugin() {

@@ -41,7 +41,11 @@ public class ConfigUtil {
 
     }
 
-    public static YamlConfiguration getConfig() {
+    public  YamlConfiguration getConfig() {
+        return config;
+    }
+
+    public static YamlConfiguration getConfigs() {
         return config;
     }
 }

@@ -2,31 +2,41 @@ package me.qiuchen.mcplugin.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import me.qiuchen.mcplugin.utils.ConfigUtil;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+
+
 public class DataSource {
 
     private static final HikariConfig config = new HikariConfig();
-    private static HikariDataSource ds;
+    private static  HikariDataSource ds;
 
-    private DataSource() {
-
-    }
-
-    public static void setup(ConfigUtil configUtil) {
-        config.setJdbcUrl("jdbc:mysql://" +ConfigUtil.getConfig().getString("mysql.host") + ":" + ConfigUtil.getConfig().getString("mysql.port")+ "/" + ConfigUtil.getConfig().getString("mysql.database"));
-        config.setUsername(ConfigUtil.getConfig().getString("mysql.username"));
-        config.setPassword(ConfigUtil.getConfig().getString("mysql.password"));
-        config.addDataSourceProperty( "cachePrepStmts" , "true" );
+    public DataSource(YamlConfiguration configUtil) {
+        config.setJdbcUrl("jdbc:mysql://" + configUtil.getString("mysql.host") + ":" + configUtil.getString("mysql.port")+ "/" + configUtil.getString("mysql.database"));
+        config.setUsername(configUtil.getString("mysql.username"));
+        config.setPassword(configUtil.getString("mysql.password"));
+        config.setMaxLifetime(60000);
+        config.addDataSourceProperty("characterEncoding", "UTF-8");
+        config.addDataSourceProperty("connectionTimeout", "10000");
+        config.addDataSourceProperty("cachePrepStmts", "true");
+        config.addDataSourceProperty("prepStmtCacheSize", "250");
+        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        config.addDataSourceProperty("useServerPrepStmts", "true");
+        config.addDataSourceProperty("useLocalSessionState", "true");
+        config.addDataSourceProperty("rewriteBatchedStatements", "true");
+        config.addDataSourceProperty("cacheServerConfiguration", "true");
+        config.addDataSourceProperty("maintainTimeStats", "false");
+        config.addDataSourceProperty("allowPublicKeyRetrieval", "true");
+        config.addDataSourceProperty("useSSL", configUtil.getString("mysql.useSSL"));
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
         ds = new HikariDataSource( config );
     }
 
-    public static Connection getConnection() throws SQLException {
+    public  Connection getConnection() throws SQLException {
         return ds.getConnection();
     }
 }
