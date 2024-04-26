@@ -32,7 +32,7 @@ public class MyEvents implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        String configMessage = ConfigUtil.getConfigs().getString("join-message");
+        String configMessage = ConfigUtil.getConfig().getString("join-message");
 
         if(configMessage != null) {
             String joinText = PlaceholderAPI.setPlaceholders(event.getPlayer(), configMessage);

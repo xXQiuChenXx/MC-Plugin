@@ -30,20 +30,16 @@ public final class Main extends JavaPlugin implements Listener {
         configUtil.loadConfiguration();
         registerEvents();
         registerCommands();
-        System.out.println("The plugin has started!");
-    }
-
-    @Override
-    public void onLoad() {
         try {
             configUtil.loadConfiguration();
-            DataSource dataSource = new DataSource(configUtil.getConfig());
+            DataSource dataSource = new DataSource();
             connection = dataSource.getConnection();
             System.out.println("Connected to database!");
             System.out.println(connection.getClientInfo());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("The plugin has started!");
     }
 
     @Override
