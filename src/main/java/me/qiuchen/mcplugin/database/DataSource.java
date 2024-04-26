@@ -17,9 +17,9 @@ public class DataSource {
     }
 
     public static void setup(ConfigUtil configUtil) {
-        config.setJdbcUrl(ConfigUtil.getConfig().getString("database.host") );
-        config.setUsername(ConfigUtil.getConfig().getString("database.username"));
-        config.setPassword(ConfigUtil.getConfig().getString("database.password"));
+        config.setJdbcUrl("jdbc:mysql://" +ConfigUtil.getConfig().getString("mysql.host") + ":" + ConfigUtil.getConfig().getString("mysql.port")+ "/" + ConfigUtil.getConfig().getString("mysql.database"));
+        config.setUsername(ConfigUtil.getConfig().getString("mysql.username"));
+        config.setPassword(ConfigUtil.getConfig().getString("mysql.password"));
         config.addDataSourceProperty( "cachePrepStmts" , "true" );
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
