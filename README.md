@@ -1,2 +1,2 @@
 # MC-Plugin
-A Basic Minecraft Plugin 
+A Basic Minecraft Plugin.
